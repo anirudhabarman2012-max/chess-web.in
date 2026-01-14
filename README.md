@@ -49,8 +49,7 @@
     .board-wrap {
       position: relative;
       display: grid;
-      grid-template-areas:
-        "board";
+      grid-template-areas: "board";
       grid-template-columns: minmax(480px, 720px);
       justify-content: center;
     }
@@ -414,7 +413,12 @@
         onDragStart,
         onDrop,
         onSnapEnd,
-        onSquareClick
+        onSquareClick,
+        // IMPORTANT: set piece image source
+        pieceTheme: function(piece) {
+          // piece is like 'wK', 'bq', etc. Map to wikipedia set
+          return 'https://cdnjs.cloudflare.com/ajax/libs/chessboard-js/1.0.0/img/chesspieces/wikipedia/' + piece + '.png';
+        }
       });
       overlayEl.innerHTML = "";
       for (let r = 0; r < 8; r++) {
